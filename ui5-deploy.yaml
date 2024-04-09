@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: student00.sap.training.helloworld
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S4D_100
+          url: http://s4d.virtual:443
+        app:
+          name: ZUI5_BAS_00
+          description: Student 00
+          package: ZTRAIN_00
+          transport: S4DK900219
+        exclude:
+          - /test/
